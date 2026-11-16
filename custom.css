@@ -1,0 +1,235 @@
+/* --- 1. Import Fonts --- */
+/* Importing the Google Font 'Source Sans 3' */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500&display=swap');
+
+/* --- 2. Global Styles --- */
+/* These rules define basic font and background colors as well as general layout. */
+body {
+    font-family: "Source Sans 3", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+	padding-bottom: 50px; /* Space for the footer */
+}
+
+/* --- 3. Typography --- */
+/* Rules for text elements such as headings, labels, and general typography */
+h2 {
+  color: #642878 ;
+  font: "Cabin Bold";
+  font-weight: bold;
+}
+
+h3 {
+  color: #D20064;
+  font: "Cabin Bold";
+  font-weight: bold;
+}
+
+h4 {
+    margin-bottom: 15px;
+}
+h5 {
+    font-weight: bold;
+}
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 400;
+} /* not sure if there are labels in my HTML at all */
+
+/* --- 4. Reactable Table --- */
+/* Styling for tables and Reactable-specific classes */
+.rt-text-content {
+    color: #000000;
+}
+.rt-th {
+    font-weight: 400;
+    border-left-color: #ffffff80;
+    border-bottom: 2px solid #ffffff80;
+}
+.rt-sort-right {
+    color: #ffffff;
+}
+.rt-table {
+	max-width: 100%;
+    overflow: auto;
+    border-color: #e6e6e6;
+}
+.rt-search {
+    background-color: #fff; /* Search field background color (white). */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Slightly gray border for the search field. */
+    padding: 5px 7px; /* Padding (vertical 5px, horizontal 7px). */
+}
+
+/* --- 5. Dropdown (Selectize) --- */
+/* Dropdown styles for the Selectize plugin. */
+.selectize-input {
+    border: 0; /* No border. */
+    padding: 6px 12px; /* Padding (vertical 6px, horizontal 12px). */
+    box-shadow: none; /* No shadow. */
+    border-radius: 0; /* No rounded corners. */
+	width: 100%;
+    position: relative;
+}
+.selectize-input.focus {
+    border-color: red; /* Border color on focus (red). */
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075), 0 0 0  #D20064); /* Slight shadow on focus. */
+}
+
+.selectize-control.multi .selectize-input>div.active,
+.selectize-control.multi .selectize-input>div {
+    background:#D20064;
+    color: #ffffff;
+    border: none;
+}
+
+.selectize-dropdown {
+    background: #ffffff; /* Dropdown background color (white). */
+    border: 1px solid #D20064; /* Dark pink border. */
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.175); /* No outer shadow. */
+}
+
+.selectize-dropdown .option:hover {     /* Corrected */
+    background-color: #D20064;
+    color: #ffffff;
+}
+
+/* --- 6. Navigation & Links --- */
+.nav-tabs > li > a {
+    border: 1px solid transparent; /* Invisible border for tab links. */
+    border-radius: 0 0 0 0; /* No rounded corners. */
+}
+a {
+    color: #642878; /* Link color. */
+    text-decoration: none; /* Remove underline from links. */
+}
+
+/* --- 7. Sidebar --- */
+.well {
+    background-color:#E2EAF4; /* Light blue background. */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); /* Slight inner shadow. */
+	border-radius: 5px; 
+}
+
+/* --- 8. Buttons --- */
+.my-button {
+    width: 100%; /* Button takes full width. */
+    padding: 10px; /* Button padding. */
+    background-color: #D20064; /* Dark pink background. */
+    color: #e6e6e6; /* Light text color. */
+    font-weight: 200; /* Thin font. */
+}
+.my-button:hover {
+    background-color:  #C873A0; /* Lighter pink on hover. */
+}
+@media (max-width: 767px) {
+    .my-button {
+        font-size: 0.9em; /* Smaller font on narrow screens. */
+    }
+}
+
+/* --- 9. Footer --- */
+.footer {
+	margin: 0 -15px;
+    width: calc(100% + 30px);
+    position: fixed;
+    bottom: 0;
+    background: linear-gradient(90deg,  #642878 0%,  #D20064 100%);
+    color: white;
+	z-index: 2; 
+}
+
+/* --- 10. Badges --- */
+.badge {
+    padding: 2px 8px;
+    background-color: #E2EAF4;
+    color: #333;
+}
+
+/* Download button */
+#downloadCSV {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#downloadCSV:hover {
+  background-color: #D20064;  /* Pink on hover */
+  color: white;
+}
+
+#downloadRAW {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#downloadRAW:hover {
+  background-color: #D20064;  /* Pink on hover */
+  color: white;
+}
+
+/* --- 11. Details/Summary --- */
+/* Controls collapsing and expanding content on the Detailed Tool Description page */
+details summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+details summary::before {
+    content: '▶';
+    margin-right: 8px;
+}
+details[open] summary::before {
+    content: '▼';
+}
+
+/* --- 12. Debugging --- */
+.debug-outline {
+    border: 2px dashed red;
+}
+
+/* --- 14. Variable Box Adjustments --- */
+.variable-box {
+    background-color: #E2EAF4;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    overflow: visible; /* Important: Prevents content from being cut off */
+}
+
+.info-box {
+	background-color:#E2EAF4;
+	font-size: 14px;
+	line-height: 1.8;
+    border-radius: 10px;
+	border: 2px solid  #D20064;
+    padding: 10px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	overflow: visible; /* Prevents content from being cut off */
+    display: inline-block; /* Adjusts width to content */
+    width: auto; /* Optional, ensures box adjusts automatically to text width */
+}
+
+.shiny-plot-output {
+  width: 100%;
+  height: auto;
+}
+
+.aware {
+	color: red;
+	margin-top: 10px;
+}
