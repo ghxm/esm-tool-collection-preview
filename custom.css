@@ -41,6 +41,20 @@ label {
 
 /* --- 4. Reactable Table --- */
 /* Styling for tables and Reactable-specific classes */
+
+/* Tool names are buttons that open the tool's details; they look like plain text */
+.tool-name {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+.tool-name:focus-visible {
+    outline: 2px solid #D20064;
+    outline-offset: 2px;
+}
 .rt-text-content {
     color: #000000;
 }

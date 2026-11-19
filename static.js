@@ -13,6 +13,17 @@ function showTool(index) {
   if (tpl) document.getElementById('tool_details').innerHTML = tpl.innerHTML;
 }
 
+// Opens the description of the tool in table row `index` and moves keyboard focus to it
+function openTool(index) {
+  showTool(index);
+  showTab('Detailed Tool Information');
+  var heading = document.querySelector('#tool_details h2');
+  if (heading) {
+    heading.setAttribute('tabindex', '-1');
+    heading.focus();
+  }
+}
+
 // Chart images: loads the version drawn for the width closest to the column width
 function fitPlots() {
   $('img[data-plot-base]').each(function () {
