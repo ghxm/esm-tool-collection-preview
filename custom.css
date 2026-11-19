@@ -86,6 +86,8 @@ label {
     background-color: #fff; /* Search field background color (white). */
     border: 1px solid rgba(0, 0, 0, 0.1); /* Slightly gray border for the search field. */
     padding: 5px 7px; /* Padding (vertical 5px, horizontal 7px). */
+    width: 300px; /* Room for longer search terms. */
+    max-width: 100%;
 }
 
 /* --- 5. Dropdown (Selectize) --- */
@@ -148,6 +150,75 @@ a {
     .row > .col-sm-2 {
         position: sticky; /* Sidebar stays in view while the page scrolls (only where it sits beside the content). */
         top: 20px;
+    }
+}
+#filter-toggle {
+    display: none; /* Only on phones, see below. */
+}
+@media (max-width: 767px) {
+    /* Phones: the filter panel opens and closes with the "Filters" button */
+    #filter-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .filter-chevron {
+        margin-left: auto; /* Arrow at the right end of the button. */
+        transition: transform 0.2s;
+    }
+    .filters-open .filter-chevron {
+        transform: rotate(180deg);
+    }
+    #filter-box:not(.filters-open) #filter-panel {
+        display: none;
+    }
+    /* Phones: the tabs are one row of bordered buttons that can be swiped sideways */
+    .nav-tabs {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none; /* Swipeable without a visible scroll bar. */
+        border-bottom: none;
+        padding-bottom: 2px;
+    }
+    .nav-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    /* Fade at an edge where more tabs can be swiped into view (classes set in www/static.js) */
+    .nav-tabs.more-right {
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    }
+    .nav-tabs.more-left {
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 40px);
+        mask-image: linear-gradient(to right, transparent, #000 40px);
+    }
+    .nav-tabs.more-left.more-right {
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+        mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+    }
+    .nav-tabs > li {
+        float: none;
+        flex: none;
+        margin-bottom: 0;
+    }
+    .nav-tabs > li > a,
+    .nav-tabs > li > a:hover {
+        margin-right: 0;
+        padding: 6px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:hover,
+    .nav-tabs > li.active > a:focus {
+        border: 1px solid #642878;
+        color: #642878;
+        background-color: #f4eef7;
     }
 }
 
@@ -243,8 +314,11 @@ details summary::before {
     content: '▶';
     margin-right: 8px;
 }
-details[open] summary::before {
+details[open] > summary::before {
     content: '▼';
+}
+.expand-all {
+    margin-bottom: 10px; /* "Expand all" / "Collapse all" above the sections. */
 }
 
 /* --- 12. Debugging --- */
@@ -271,8 +345,7 @@ details[open] summary::before {
 	margin-bottom: 15px;
 	margin-top: 15px;
 	overflow: visible; /* Prevents content from being cut off */
-    display: inline-block; /* Adjusts width to content */
-    width: auto; /* Optional, ensures box adjusts automatically to text width */
+    display: block; /* Full width of the column. */
 }
 
 .shiny-plot-output {

@@ -25,6 +25,17 @@ function showTab(name) {
 function showTool(tpl) {
   document.getElementById('tool_details').innerHTML = tpl ? tpl.innerHTML : noToolHtml;
   shownTool = tpl;
+  if (tpl) {
+    try { localStorage.setItem('lastTool', tpl.getAttribute('data-tool-slug')); } catch (e) {} // storage may be blocked
+  }
+}
+
+// Template of the tool shown last in this browser (also on an earlier visit), or null
+function lastTool() {
+  if (shownTool) return shownTool;
+  var slug = null;
+  try { slug = localStorage.getItem('lastTool'); } catch (e) {}
+  return slug && /^[a-z0-9-]+$/.test(slug) ? document.querySelector('#tool-templates template[data-tool-slug="' + slug + '"]') : null;
 }
 
 // Moves keyboard focus to the heading of the shown tab
@@ -47,11 +58,21 @@ function applyAddress() {
     tab = DETAILS_TAB;
   } else {
     for (var name in TAB_ADDRESSES) if (TAB_ADDRESSES[name] === address) tab = name;
-    if (tab === DETAILS_TAB) showTool(null);
+    if (tab === DETAILS_TAB) {
+      // The details tab without a tool shows the last tool opened, if any
+      var last = lastTool();
+      showTool(last);
+      if (last) history.replaceState(history.state, '', '#tool=' + last.getAttribute('data-tool-slug'));
+    }
   }
   applying = true;
   showTab(tab);
   applying = false;
+  var active = document.querySelector('.nav-tabs li.active');
+  if (active) {
+    active.scrollIntoView({ block: 'nearest', inline: 'center' }); // tab row on phones scrolls sideways
+    fadeTabEdges();
+  }
   document.title = tab === DETAILS_TAB && shownTool ? shownTool.getAttribute('data-tool-name') + ' – ' + PAGE_TITLE : PAGE_TITLE;
   var saved = history.state && history.state.scrollY;
   var tabsTop = document.querySelector('.nav-tabs').getBoundingClientRect().top + window.scrollY;
@@ -80,7 +101,8 @@ $(document).on('show.bs.tab', function (event) {
   if (applying) return;
   event.preventDefault();
   var tab = $(event.target).attr('data-value');
-  goTo(tab === DETAILS_TAB && shownTool ? 'tool=' + shownTool.getAttribute('data-tool-slug') : TAB_ADDRESSES[tab]);
+  var last = tab === DETAILS_TAB && lastTool();
+  goTo(last ? 'tool=' + last.getAttribute('data-tool-slug') : TAB_ADDRESSES[tab]);
 });
 
 // Links to these addresses ("How to cite", "Back to table") as well; "Back to table" acts like Back if you came from the table
@@ -119,6 +141,37 @@ function scrollToTable() {
   if (top < 0) window.scrollTo(0, window.scrollY + top - 20);
 }
 
+// Phones: the filters sit above the table (#filter-slot) instead of in the sidebar
+var PHONE = window.matchMedia('(max-width: 767px)');
+function placeFilters() {
+  var box = document.getElementById('filter-box');
+  var target = PHONE.matches ? document.getElementById('filter-slot') : document.querySelector('.row > .col-sm-2');
+  if (box.parentElement !== target) target.appendChild(box);
+}
+placeFilters(); // right away, before the page is first drawn
+PHONE.addEventListener('change', placeFilters);
+
+// Tab row on phones: marks the edges where more tabs can be swiped into view (faded in custom.css)
+function fadeTabEdges() {
+  var row = document.querySelector('.nav-tabs');
+  row.classList.toggle('more-left', row.scrollLeft > 1);
+  row.classList.toggle('more-right', row.scrollLeft + row.clientWidth < row.scrollWidth - 1);
+}
+
+// "Filters" button on phones: opens and closes the filter panel
+function toggleFilters() {
+  var button = document.getElementById('filter-toggle');
+  var open = button.parentElement.classList.toggle('filters-open');
+  button.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+// Number of selected filter values, shown on the "Filters" button
+function showFilterCount() {
+  var n = 0;
+  $('select[data-filter-column]').each(function () { n += ($(this).val() || []).length; });
+  $('#filter-toggle .filter-count').text(n ? '(' + n + ' active)' : '');
+}
+
 // Line above the table: how many tools match the filters and the search
 function showMatchCount(state) {
   var shown = state.sortedData.length, total = state.data.length;
@@ -134,6 +187,18 @@ function watchMatchCount() {
     setTimeout(watchMatchCount, 100); // table not drawn yet
   }
 }
+
+// Tool descriptions: "Expand all" opens every section, "Collapse all" closes them all
+function updateExpandButton() {
+  var button = document.querySelector('#tool_details .expand-all');
+  if (button) button.textContent = document.querySelector('#tool_details details:not([open])') ? 'Expand all' : 'Collapse all';
+}
+$(document).on('click', '#tool_details .expand-all', function () {
+  var open = !!document.querySelector('#tool_details details:not([open])');
+  document.querySelectorAll('#tool_details details').forEach(function (d) { d.open = open; });
+  updateExpandButton();
+});
+document.addEventListener('toggle', updateExpandButton, true); // toggle events of sections don't bubble
 
 // Links in the table only open the link, not also the tool description of their row
 document.addEventListener('click', function (event) {
@@ -154,9 +219,16 @@ $(function () {
     $(el).on('change', function () {
       var values = $(el).val() || [];
       Reactable.setFilter(TABLE_ID, el.getAttribute('data-filter-column'), values.length ? values : undefined);
+      showFilterCount();
       scrollToTable();
     });
   });
+
+  $('#filter-toggle').on('click', toggleFilters);
+
+  $('.nav-tabs').on('scroll', fadeTabEdges);
+  $(window).on('load resize', fadeTabEdges); // also once fonts and layout are final
+  fadeTabEdges();
 
   // Reset button: clears all filter dropdowns
   $('#reset-filters').on('click', function () {
