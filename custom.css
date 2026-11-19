@@ -55,6 +55,12 @@ label {
     outline: 2px solid #D20064;
     outline-offset: 2px;
 }
+
+/* Links in the "Additional information" column */
+.info-link {
+    color: black;
+    text-decoration: underline;
+}
 .rt-text-content {
     color: #000000;
 }

@@ -38,6 +38,11 @@ function fitPlots() {
 $(document).on('shown.bs.tab', fitPlots);
 $(window).on('resize', fitPlots);
 
+// Links in the table only open the link, not also the tool description of their row
+document.addEventListener('click', function (event) {
+  if (event.target.closest && event.target.closest('#tool-table a')) event.stopPropagation();
+}, true);
+
 $(function () {
   fitPlots();
 
