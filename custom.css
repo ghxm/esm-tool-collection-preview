@@ -12,25 +12,29 @@ body {
     background-color: #fff;
 	padding-bottom: 50px; /* Space for the footer */
 }
+body > .container-fluid {
+    padding-top: 30px; /* Space above the tabs and the sidebar. */
+}
 
 /* --- 3. Typography --- */
 /* Rules for text elements such as headings, labels, and general typography */
+/* A heading with class h3, h4 or h5 looks like that level (e.g. <h3 class="h4">) */
 h2 {
   color: #642878 ;
   font: "Cabin Bold";
   font-weight: bold;
 }
 
-h3 {
+h3:not(.h4), .h3 {
   color: #D20064;
   font: "Cabin Bold";
   font-weight: bold;
 }
 
-h4 {
+h4:not(.h5), .h4 {
     margin-bottom: 15px;
 }
-h5 {
+h5, .h5 {
     font-weight: bold;
 }
 label {
@@ -78,6 +82,7 @@ label {
     border-color: #e6e6e6;
 }
 .rt-search {
+    align-self: flex-start; /* Search field at the left edge of the table. */
     background-color: #fff; /* Search field background color (white). */
     border: 1px solid rgba(0, 0, 0, 0.1); /* Slightly gray border for the search field. */
     padding: 5px 7px; /* Padding (vertical 5px, horizontal 7px). */
@@ -125,6 +130,10 @@ a {
     color: #642878; /* Link color. */
     text-decoration: none; /* Remove underline from links. */
 }
+.back-to-table {
+    display: inline-block;
+    margin-top: 15px; /* Space below the tabs; the tool heading follows. */
+}
 
 /* --- 7. Sidebar --- */
 .well {
@@ -132,8 +141,20 @@ a {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); /* Slight inner shadow. */
 	border-radius: 5px; 
 }
+#reset-filters {
+    margin-bottom: 20px; /* Space between the filters and the download buttons. */
+}
+@media (min-width: 768px) {
+    .row > .col-sm-2 {
+        position: sticky; /* Sidebar stays in view while the page scrolls (only where it sits beside the content). */
+        top: 20px;
+    }
+}
 
 /* --- 8. Buttons --- */
+.btn:focus:not(:focus-visible) {
+    outline: none; /* Focus ring only for keyboard use, not after a mouse click. */
+}
 .my-button {
     width: 100%; /* Button takes full width. */
     padding: 10px; /* Button padding. */
@@ -159,6 +180,16 @@ a {
     background: linear-gradient(90deg,  #642878 0%,  #D20064 100%);
     color: white;
 	z-index: 2; 
+}
+.footer-link {
+    float: right;
+    padding: 0 40px 0 0;
+    border: none;
+    background: none;
+    color: white;
+}
+.footer-link:hover, .footer-link:focus {
+    color: white;
 }
 
 /* --- 10. Badges --- */
