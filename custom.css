@@ -150,7 +150,7 @@ a {
 #reset-filters {
     margin-bottom: 20px; /* Space between the filters and the download buttons. */
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .row > .col-sm-2 {
         position: sticky; /* Sidebar stays in view while the page scrolls (only where it sits beside the content). */
         top: 20px;
@@ -159,7 +159,14 @@ a {
 #filter-toggle {
     display: none; /* Only on phones, see below. */
 }
-@media (max-width: 767px) {
+/* Phone layout, used below 992 px, where the tab row would wrap (also www/static.js) */
+@media (max-width: 991px) {
+    /* Sidebar above the content (Bootstrap does this only below 768 px) */
+    .row > .col-sm-2,
+    .row > .col-sm-10 {
+        float: none;
+        width: 100%;
+    }
     /* Phones: the filter panel opens and closes with the "Filters" button */
     #filter-toggle {
         display: flex;

@@ -147,7 +147,7 @@ function scrollToTable() {
 }
 
 // Phones: the filters sit above the table (#filter-slot) instead of in the sidebar
-var PHONE = window.matchMedia('(max-width: 767px)');
+var PHONE = window.matchMedia('(max-width: 991px)'); // as the phone layout in custom.css
 function placeFilters() {
   var box = document.getElementById('filter-box');
   var target = PHONE.matches ? document.getElementById('filter-slot') : document.querySelector('.row > .col-sm-2');
