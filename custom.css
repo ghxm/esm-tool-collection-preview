@@ -128,6 +128,10 @@ label {
     border: 1px solid transparent; /* Invisible border for tab links. */
     border-radius: 0 0 0 0; /* No rounded corners. */
 }
+/* "Detailed Tool Information" tab: hidden until a tool has been opened (class set in www/static.js) */
+.nav-tabs:not(.has-tool) > li:has(> a[data-value="Detailed Tool Information"]) {
+    display: none;
+}
 a {
     color: #642878; /* Link color. */
     text-decoration: none; /* Remove underline from links. */

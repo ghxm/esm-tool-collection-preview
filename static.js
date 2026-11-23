@@ -12,7 +12,6 @@ var TAB_ADDRESSES = {
   'How to contribute': 'contribute'
 };
 var PAGE_TITLE = document.title;
-var noToolHtml; // "No tool selected" message, kept at page load
 var shownTool = null; // template of the tool in the details tab
 var applying = false; // true while the page follows the web address
 
@@ -21,13 +20,17 @@ function showTab(name) {
   $('a[data-value="' + name + '"]').tab('show');
 }
 
-// Shows the description in a tool's template, or "No tool selected" without one
+// Shows the description in a tool's template, and the details tab in the tab row
 function showTool(tpl) {
-  document.getElementById('tool_details').innerHTML = tpl ? tpl.innerHTML : noToolHtml;
+  document.getElementById('tool_details').innerHTML = tpl.innerHTML;
   shownTool = tpl;
-  if (tpl) {
-    try { localStorage.setItem('lastTool', tpl.getAttribute('data-tool-slug')); } catch (e) {} // storage may be blocked
-  }
+  showDetailsTab();
+  try { localStorage.setItem('lastTool', tpl.getAttribute('data-tool-slug')); } catch (e) {} // storage may be blocked
+}
+
+// Shows the details tab, hidden in the tab row until a tool has been opened (www/custom.css)
+function showDetailsTab() {
+  document.querySelector('.nav-tabs').classList.add('has-tool');
 }
 
 // Template of the tool shown last in this browser (also on an earlier visit), or null
@@ -52,18 +55,20 @@ function focusHeading() {
 function applyAddress() {
   var address = location.hash.slice(1);
   var tab = 'Tool Table';
+  var tool = null;
   if (address.indexOf('tool=') === 0) {
     var slug = address.slice(5);
-    showTool(/^[a-z0-9-]+$/.test(slug) ? document.querySelector('#tool-templates template[data-tool-slug="' + slug + '"]') : null);
+    tool = /^[a-z0-9-]+$/.test(slug) ? document.querySelector('#tool-templates template[data-tool-slug="' + slug + '"]') : null;
     tab = DETAILS_TAB;
   } else {
     for (var name in TAB_ADDRESSES) if (TAB_ADDRESSES[name] === address) tab = name;
-    if (tab === DETAILS_TAB) {
-      // The details tab without a tool shows the last tool opened, if any
-      var last = lastTool();
-      showTool(last);
-      if (last) history.replaceState(history.state, '', '#tool=' + last.getAttribute('data-tool-slug'));
-    }
+    if (tab === DETAILS_TAB) tool = lastTool(); // the details tab without a tool shows the last tool opened
+  }
+  if (tab === DETAILS_TAB) {
+    // Without a tool (none opened yet, or an unknown name) the table is shown instead
+    if (tool) showTool(tool);
+    else tab = 'Tool Table';
+    history.replaceState(history.state, '', '#' + (tool ? 'tool=' + tool.getAttribute('data-tool-slug') : 'table'));
   }
   applying = true;
   showTab(tab);
@@ -206,7 +211,7 @@ document.addEventListener('click', function (event) {
 }, true);
 
 $(function () {
-  noToolHtml = document.getElementById('tool_details').innerHTML;
+  if (lastTool()) showDetailsTab();
   history.scrollRestoration = 'manual'; // scroll positions are restored by applyAddress()
   fitPlots();
   watchMatchCount();
