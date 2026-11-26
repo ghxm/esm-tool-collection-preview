@@ -37,6 +37,26 @@ h4:not(.h5), .h4 {
 h5, .h5 {
     font-weight: bold;
 }
+/* Site name and subtitle on the table tab */
+.site-name {
+    font-size: 34px;
+    line-height: 1.1;
+    margin: 22px 0 4px;
+}
+.site-sub {
+    font-size: 18px;
+    color: #555;
+    margin: 0 0 6px;
+}
+@media (max-width: 991px) {
+    .site-name {
+        font-size: 27px;
+        margin-top: 16px;
+    }
+    .site-sub {
+        font-size: 16px;
+    }
+}
 label {
     display: inline-block;
     margin-bottom: 5px;
@@ -331,19 +351,99 @@ details[open] > summary::before {
 .expand-all {
     margin-bottom: 10px; /* "Expand all" / "Collapse all" above the sections. */
 }
+/* Main sections collapse and are separated by a line; sub-sections are always shown, indented with a guide line */
+#tool_details {
+    container-type: inline-size; /* The side-by-side layout (section 14) depends on the width of the description. */
+}
+#tool_details > details {
+    border-top: 1px solid #e3e3e3;
+    padding: 14px 0 6px;
+}
+#tool_details > details > summary h3 {
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+#tool_details .sub {
+    margin: 16px 0 4px 6px;
+    padding-left: 20px;
+    border-left: 2px solid #e4d9ea;
+}
+#tool_details .sub > h4,
+#tool_details .sub > h5 {
+    font-weight: bold;
+    margin: 0 0 8px;
+}
+#tool_details .sub > h4 {
+    font-size: 16px;
+}
+#tool_details .sub > h5 {
+    font-size: 15px;
+}
 
 /* --- 12. Debugging --- */
 .debug-outline {
     border: 2px dashed red;
 }
 
-/* --- 14. Variable Box Adjustments --- */
+/* --- 14. Tool descriptions: the tool's information and the explanation --- */
+/* The tool's information as plain text, one sentence per line */
 .variable-box {
-    background-color: #E2EAF4;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 15px;
-    overflow: visible; /* Important: Prevents content from being cut off */
+    margin-bottom: 8px;
+}
+.variable-box > span {
+    display: block;
+    margin-bottom: 3px;
+}
+.variable-box.aware {
+    color: #6b6b6b; /* "There is no information ..." */
+    margin-top: 0;
+}
+/* Explanation: grey box with an info icon */
+.expl {
+    position: relative;
+    background-color: #f3f3f3;
+    border-radius: 6px;
+    padding: 10px 14px 10px 36px;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 13px;
+}
+.expl::before {
+    content: "\f05a"; /* Font Awesome "circle-info" */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 14px;
+    top: 10px;
+    color: #8a8a8a;
+}
+.expl p {
+    margin: 0 0 6px;
+}
+.expl ul {
+    padding-left: 18px;
+    margin: 4px 0 6px;
+}
+.expl > :last-child {
+    margin-bottom: 0;
+}
+/* Wide descriptions: explanation to the right, its column the same width at every level so the notes line up.
+   Narrower (phones, small windows): explanation below the tool's information. */
+@container (min-width: 900px) {
+    #tool_details .side {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 54cqw;
+        gap: 24px;
+        align-items: start;
+        margin-bottom: 10px;
+    }
+    #tool_details .side > .values {
+        padding-top: 10px; /* Level with the first line of the explanation. */
+    }
+    #tool_details .side > .expl {
+        grid-column: 2;
+        margin-bottom: 0;
+    }
 }
 
 .info-box {
@@ -351,7 +451,7 @@ details[open] > summary::before {
 	font-size: 14px;
 	line-height: 1.8;
     border-radius: 10px;
-	border: 2px solid  #D20064;
+	border: 2px solid #c4c4c4;
     padding: 10px;
 	margin-bottom: 15px;
 	margin-top: 15px;

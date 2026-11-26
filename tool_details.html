@@ -7,372 +7,508 @@
 <body>
 	<h2>Detailed Tool Information: {toolname}</h2>
 
-	<p>Here you can find a more detailed description of the features of the tool {toolname}. 
-     This information has been collected manually on <strong>{collection_date_format}</strong>. We cannot 
-     guarantee for complete accuracy or timeliness. If you notice any mistakes, 
+	<p>Here you can find a more detailed description of the features of the tool {toolname}.
+     This information has been collected manually on <strong>{collection_date_format}</strong>. We cannot
+     guarantee for complete accuracy or timeliness. If you notice any mistakes,
      please don't hesitate to contact us via: <strong>appkit@gesis.org.</strong></p>
 
 	<button type="button" class="btn btn-default expand-all">Expand all</button>
 
+	<!-- Each section: heading, then the tool's information ("values") and the explanation ("expl"), then its sub-sections -->
+
 	<details open>
 		<summary><h3 class="h4"><strong>General Information</strong></h3></summary>
-		<div class="variable-box">
-		  <span>This tool is best described as a <strong>{toolcategory}</strong>.</span>
+		<div class="side">
+			<div class="values">
+				<div class="variable-box">
+				  <span>This tool is best described as a <strong>{toolcategory}</strong>.</span>
+				</div>
+			</div>
+			<div class="expl">
+				<ul>
+				  <li><em>Platform:</em> Offers the possibility to create and customize projects for studying any research topic.</li>
+				  <li><em>Single study tool:</em> Designed to study a single, specific, and rather narrow research topic.</li>
+				  <li><em>Panel-integrated tool:</em> Offered as part of a (commercial) survey panel and depends on the provider's panelists.</li>
+				  <li><em>Technical framework:</em> Allows creating a custom app/collection infrastructure based on pre-developed modules.</li>
+				</ul>
+			</div>
 		</div>
-		<ul>
-		  <li><em>Platform:</em> Offers the possibility to create and customize projects for studying any research topic.</li>
-		  <li><em>Single study tool:</em> Designed to study a single, specific, and rather narrow research topic.</li>
-		  <li><em>Panel-integrated tool:</em> Offered as part of a (commercial) survey panel and depends on the provider's panelists.</li>
-		  <li><em>Technical framework:</em> Allows creating a custom app/collection infrastructure based on pre-developed modules.</li>
-		</ul>
 
-		<details>
-		  <summary><h4 class="h5">Software components</h4></summary>
-		  <p>Mobile sensing and surveying tools might have an interface, often web-based, for researchers to create a study, 
-			 manage participants, visualize data, or similar, as well as an app for study participants to 
-			 install on their devices. Furthermore, they might have an API (or similar) for reading 
-			 external data, e.g., from external sensors like fitness trackers.</p>
-		  <div class="variable-box">
-			<span>The software components of this tool include: <strong>{softwarecomponents}</strong>.</span>
-		  </div>
-		</details>
+		<section class="sub">
+			<h4 class="h5">Software components</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>The software components of this tool include: <strong>{softwarecomponents}</strong>.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Mobile sensing and surveying tools might have an interface, often web-based, for researchers to create a study,
+					   manage participants, visualize data, or similar, as well as an app for study participants to
+					   install on their devices. Furthermore, they might have an API (or similar) for reading
+					   external data, e.g., from external sensors like fitness trackers.</p>
+				</div>
+			</div>
+		</section>
 
-		<details>
-		  <summary><h4 class="h5">Development context</h4></summary>
-		  <p>Providers and developers come from diverse backgrounds, including single researchers, 
-			 academic institutions, non-commercial research institutions, commercial companies, or others.</p>
-		  <div class="variable-box">
-			<span>This tool is provided by <strong>{provider}</strong>. The name of the (main) provider is <strong>{providername}</strong>.</span>
-			<span>It was originally developed with <strong>{developer}</strong> purposes. The name of the (main) developer is <strong>{developername}</strong>.</span>
-			<span>The tool has been developed for <strong>{target}</strong> purposes.</span>
-		  </div>
-		</details>
+		<section class="sub">
+			<h4 class="h5">Development context</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>This tool is provided by <strong>{provider}</strong>. The name of the (main) provider is <strong>{providername}</strong>.</span>
+					  <span>It was originally developed with <strong>{developer}</strong> purposes. The name of the (main) developer is <strong>{developername}</strong>.</span>
+					  <span>The tool has been developed for <strong>{target}</strong> purposes.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Providers and developers come from diverse backgrounds, including single researchers,
+					   academic institutions, non-commercial research institutions, commercial companies, or others.</p>
+				</div>
+			</div>
+		</section>
 	</details>
 
 	<details open>
-	  <summary><h3 class="h4"><strong>Distribution, Licensing & Pricing</strong></h3></summary>
-	  
-	  <details>
-			<summary><h4 class="h5">Distribution</h4></summary>
-			<p>Distribution refers to where the tool is run and managed, and where the data produced by the software is stored. We differentiate between:</p>
-			<ul>
-			  <li><em>Cloud-based: </em> Hosted by the provider and accessed over the internet. Regarding cloud-based distribution, the server 
-				  location is important for data security and privacy, as different countries have 
-				  different laws regarding data protection. If controlled by the provider, servers 
-				  may be located within or outside the EU. Servers within the EU comply with GDPR, 
-				  while those outside may not.</li>
-			  <li><em>On premise:</em> Hosted on the user's own servers or devices.</li>
-			  <li><em>Hybrid:</em> A combination of cloud-based and on-premise services (e.g., Microsoft Office with OneDrive).</li>
-			</ul>
-			<div class="variable-box">
-			  <span>The distribution of the tool is <strong>{distribution}</strong>.</span>
-			  <span>The server for this tool is located in <strong>{server_location}</strong>.</span>
+		<summary><h3 class="h4"><strong>Distribution, Licensing & Pricing</strong></h3></summary>
+
+		<section class="sub">
+			<h4 class="h5">Distribution</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>The distribution of the tool is <strong>{distribution}</strong>.</span>
+					  <span>The server for this tool is located in <strong>{server_location}</strong>.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Distribution refers to where the tool is run and managed, and where the data produced by the software is stored. We differentiate between:</p>
+					<ul>
+					  <li><em>Cloud-based: </em> Hosted by the provider and accessed over the internet. Regarding cloud-based distribution, the server
+						  location is important for data security and privacy, as different countries have
+						  different laws regarding data protection. If controlled by the provider, servers
+						  may be located within or outside the EU. Servers within the EU comply with GDPR,
+						  while those outside may not.</li>
+					  <li><em>On premise:</em> Hosted on the user's own servers or devices.</li>
+					  <li><em>Hybrid:</em> A combination of cloud-based and on-premise services (e.g., Microsoft Office with OneDrive).</li>
+					</ul>
+				</div>
 			</div>
-	  </details>
+		</section>
 
-	  <details>
-			<summary><h4 class="h5">Licensing</h4></summary>
-			<p>Licensing describes the rights and restrictions for using, modifying, or sharing the tool. We differentiate between:</p>
-			<ul>
-			  <li><em>Permissive open-source:</em> The tool is free to use, modify, and share, with few restrictions.</li>
-			  <li><em>Non-permissive open-source:</em> The tool can be used, modified, and shared, but with some restrictions, such as non-commercial use only.</li>
-			  <li><em>Proprietary/non-open-source:</em> The provider sets the conditions for how the tool can be used.</li>
-			</ul>
-			<div class="variable-box">
-			  <span>The tool's licensing can be described as <strong>{licence}</strong> licensing.</span>
+		<section class="sub">
+			<h4 class="h5">Licensing</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>The tool's licensing can be described as <strong>{licence}</strong> licensing.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Licensing describes the rights and restrictions for using, modifying, or sharing the tool. We differentiate between:</p>
+					<ul>
+					  <li><em>Permissive open-source:</em> The tool is free to use, modify, and share, with few restrictions.</li>
+					  <li><em>Non-permissive open-source:</em> The tool can be used, modified, and shared, but with some restrictions, such as non-commercial use only.</li>
+					  <li><em>Proprietary/non-open-source:</em> The provider sets the conditions for how the tool can be used.</li>
+					</ul>
+				</div>
 			</div>
-	  </details>
+		</section>
 
-	  <details>
-			<summary><h4 class="h5">Pricing</h4></summary>
-			<p>Pricing describes whether users have to pay for the tool and how the fee is calculated.</p>
-			<ul>
-			  <li><em>Free-to-use:</em> The use of this tool requires no payment.</li>
-			  <li><em>Free for some groups:</em> The tool is free for specific groups, such as students or researchers.</li>
-			  <li><em>Perpetual:</em> A one-time payment provides ongoing access to the tool.</li>
-			  <li><em>Subscription-based:</em> Users pay a recurring fee, such as monthly or annually.</li>
-			  <li><em>Storage-based:</em> The fee depends on the amount of storage used.</li>
-			  <li><em>User-based:</em> The fee depends on the number of users.</li>
-			  <li><em>Feature-based:</em> The fee depends on the features or functions used.</li>
-			</ul>
-			<div class="variable-box">
-			  <span>The pricing model can be described as <strong>{pricing}</strong>.</span>
+		<section class="sub">
+			<h4 class="h5">Pricing</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>The pricing model can be described as <strong>{pricing}</strong>.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Pricing describes whether users have to pay for the tool and how the fee is calculated.</p>
+					<ul>
+					  <li><em>Free-to-use:</em> The use of this tool requires no payment.</li>
+					  <li><em>Free for some groups:</em> The tool is free for specific groups, such as students or researchers.</li>
+					  <li><em>Perpetual:</em> A one-time payment provides ongoing access to the tool.</li>
+					  <li><em>Subscription-based:</em> Users pay a recurring fee, such as monthly or annually.</li>
+					  <li><em>Storage-based:</em> The fee depends on the amount of storage used.</li>
+					  <li><em>User-based:</em> The fee depends on the number of users.</li>
+					  <li><em>Feature-based:</em> The fee depends on the features or functions used.</li>
+					</ul>
+					<p><strong>Note:</strong> In some cases, licensing and pricing are determined by how
+					   the software is distributed. For example, (permissive) open-source software is often free of charge.</p>
+				</div>
 			</div>
-			<p><strong>Note:</strong> In some cases, licensing and pricing are determined by how 
-			   the software is distributed. For example, (permissive) open-source software is often free of charge.</p>
-	  </details>
+		</section>
 
-	  <details>
-			<summary><h4 class="h5">Maintenance</h4></summary>
-			<p>Tools also differ in terms of how regularly the code is updated to ensure that it remains functional and compatible with relevant technological changes. 
-			   Tools with no updates are no longer maintained, which may cause issues in the long run. 
-			   Tools with sporadic updates are maintained occasionally, while those with continuous updates 
-			   are regularly monitored and updated to keep it current.</p>
-			<div class="variable-box">
-			  <span>There are <strong>{updates}</strong> to maintain the tool.</span>
+		<section class="sub">
+			<h4 class="h5">Maintenance</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>There are <strong>{updates}</strong> to maintain the tool.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Tools also differ in terms of how regularly the code is updated to ensure that it remains functional and compatible with relevant technological changes.
+					   Tools with no updates are no longer maintained, which may cause issues in the long run.
+					   Tools with sporadic updates are maintained occasionally, while those with continuous updates
+					   are regularly monitored and updated to keep it current.</p>
+				</div>
 			</div>
-	  </details>
+		</section>
 
-	  <details>
-			<summary><h4 class="h5">Skill requirements</h4></summary>
-			<p>Tools may require different levels of IT skills. Some require advanced skills, 
-			   others limited, and some require none.</p>
-			<div class="variable-box">
-			  <span>It is recommended to have <strong>{skilllevel}</strong> IT skills to use the tool.</span>
+		<section class="sub">
+			<h4 class="h5">Skill requirements</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>It is recommended to have <strong>{skilllevel}</strong> IT skills to use the tool.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Tools may require different levels of IT skills. Some require advanced skills,
+					   others limited, and some require none.</p>
+				</div>
 			</div>
-	  </details>
+		</section>
 
-	<details>
-	  <summary><h4 class="h5">Contribution</h4></summary>
-	  <p>Some providers allow for contribution to the tool's development.</p>
-	  <div class="if_contribution_yes">
-		<div class="variable-box">
-		  <span>Contribution to the tool's development is possible by: <strong>{contribution}</strong>.</span>
-		</div>
-	  </div>
-	</details>
-	
-	</details>
-
-	<details open>
-	  <summary><h3 class="h4"><strong>Support & Documentation</strong></h3></summary>
-	  <p>Users might be able to access documentation that helps them use the tool. Examples include written or video tutorials, user guides, or FAQ pages.</p>
- <div class="if_documentation_yes">
-		<div class="variable-box">
-		  <span>There is <strong>documentation</strong> of this tool.</span>
-		  <span>The tool documentation is in form of a <strong>{resources}</strong>.</span>
-		</div>
-	  </div>
-	  
-	  <p>Additionally, providers might offer <strong>technical support or expert advice/special guidance</strong>. 
-		 Technical support might be provided by email or a detailed documentation on common problems 
-		 and how to solve them. Special guidance/expert advice might come in form of consultation 
-		 on research design, data privacy issues, trainings or workshops on tool use, or other 
-		 capacity building.</p>
-	  
-	  <div class="if_technical_support">
-		<div class="variable-box">
-		  <span>The providers offer <strong>technical support</strong>.</span>
-		  <span>The technical support provided is in form of <strong>{technical_support_availability}</strong>.</span>
-		</div>
-	  </div>
-	  <div class="if_advice_availability">
-		<div class="variable-box">
-		  <span>The providers offer <strong>advice/special guidance</strong>.</span>
-		  <span>The availability of this guidance can be described as <strong>{special_guidance}</strong>.</span>
-		</div>
-	  </div>
-	</details>
-
-	<details open>
-  <summary><h3 class="h4"><strong>Information on the data that can be collected</strong></h3></summary>
-  <p>Data can be generated both through active self-reporting and passive behavioral tracing, 
-     often utilizing sensors built into mobile devices. Survey or self-reported data refers to any response 
-     of study participants directly / actively provided via questionnaires, experience sampling or diary methods. 
-     Sensor data refers to data automatically / passively collected by technical systems without participants 
-     having to actively provide the data, e.g., GPS data.</p>
-  <div class="variable-box">
-    <span>The tool is able to collect <strong>{datasources}</strong> data.</span>
-  </div>
-    <details>
-      <summary><h4><strong>Sensor Data Collection</strong></h4></summary>
-      <p>Sensor data can be categorized into sensor log data, device status log data, and usage 
-         log data (Schödel & Mehl, 2024). <strong>Sensor log data</strong> can be described 
-         as data from physical sensors like microphones, light sensors, or thermometers. 
-         <strong>Device status log data</strong> refers to data on the device status like battery 
-         level, whether headphones are plugged in, or the location via GPS. <strong>Usage log data</strong> 
-         is data on the use of the device, like app usage, in-app content tracking, camera usage, 
-         screen state, or notifications. <p>
-         <p> 
-         Schoedel, R., & Mehl, M. R. (2024). Mobile sensing methods. 
-         In H.T. Reis, T. West & C.M. Judd (Eds.), 
-         Handbook of Research Methods in Social and Personality (3rd ed., pp. 297–321).
-         Cambridge University Press. https://doi.org/10.1017/9781009170123.014</p>
-        <div class="variable-box">
-          <span>This tool collects <strong>{sensordata}</strong> data.</span>
-          <span>In terms of sensor logs, the tool is able to collect data from the device's <strong>{sensorlog}</strong>.</span>
-          <span>In terms of device logs, the tool is able to collect data from the device's <strong>{devicelog}</strong>.</span>
-          <span>In terms of usage logs, the tool is able to collect data from the device's <strong>{usagelog}</strong>.</span>
-        </div>
-    </details>
-
-    <details>
-      <summary><h4><strong>Survey / Self-Report Data Collection</strong></h4></summary>
-      <p>Survey or self-reported data refers to any responses of study participants provided via questionnaires, 
-         experience sampling, or diary methods. Regarding self-reported data collection, tools can differ 
-         in available question types, multimedia integration, survey flow options, scheduling, and 
-         signalling of momentary assessments, as well as possible special features.</p>
-      <details>
-        <summary><h5><strong>Question types & multimedia integration</strong></h5></summary>
-          <div class="variable-box">
-            <span>These item and question types can be used to collect self-report data within the tool: <strong>{items}</strong>.</span>
-            <span>It is possible to include <strong>{media}</strong> within the questionnaire.</span>
-          </div>
-	  </details>
-
-      <details>
-        <summary><h5><strong>Survey flow options</strong></h5></summary>
-        <p>Survey flow options help control the order and display of survey questions based 
-           on participant answers or grouping variables. We distinguish these survey flow options:</p>
-        <ul>
-          <li><em>Skip/display logic</em> describes the possibility to skip/display additional questions 
-              based on participant answers. For example, a person reporting that they consume coffee 
-              daily might be asked how many cups of coffee they drink each day, while a person 
-              reporting that they don't drink coffee will not.</li>
-          <li><em>Piping</em> describes the insertion of participant input into following questions. 
-              For example, a participant might report that their best friend's name is "David". 
-              In the following question, they might be asked since when they know David.</li>
-          <li><em>Termination logic</em> sets a rule for when the survey should be terminated immediately. 
-              For example, when specific inclusion criteria are not met.</li>
-          <li><em>Branching (participant grouping)</em> defines survey paths based on participant answers, 
-            primarly by setting values like a grouping variable in an experimental design, or even sensor data like geolocation.</li>
-          <li><em>Question Grouping</em> organizes items in chunks to aid navigation.</li>
-        </ul>
-          <div class="variable-box">
-            <span>To control survey flow and logic, the tool allows for <strong>{surveyflow}</strong>.</span>
-          </div>
-      </details>
-
-      <details>
-        <summary><h5><strong>Assessment schedules</strong></h5></summary>
-        <span><em>Assessment schedule refers to the timing of self-reporting:</em></span>
-        <ul>
-          <li><em>Self-reminded:</em> Participants choose when to make an assessment, e.g. in a diary format.</li>
-          <li><em>Time-based:</em> Participants are prompted to make an assessment based on date and time, e.g. every day at 6. pm.</li>
-          <li><em>Event-based:</em> Participants are prompted to make an assessment based on events the phone records (via sensors), e.g. being asked to contextualize a detected geolocation.</li>
-          <li><em>Preference-based:</em> Participants can set their own scheduling plan according to their preferences.</li>
-        </ul>
-          <div class="variable-box">
-            <span>The timing of questionnaires can be <strong>{schedules}</strong>.</span>
-            <span>The time-based assessment is <strong>{schedules_time}</strong>.</span>
-            <span>The event-based assessment is <strong>{schedules_event}</strong>.</span>
-            <span>Participants find out that a new survey is available <strong>{signalling}</strong>.</span>
-          </div>
-      </details>
-        <div class="if_notes">
-      <details>
-        <summary><h5>Additional self-report collection features</h5></summary>
-        <div class="variable-box">
-            <span><strong>Additional features for self-report data collection are: </strong>{notes}</strong><span>
-          </div>
-      </details>
-    </details>
-</details>
-
-	  
-<details open>
-  <summary><h3 class="h4"><strong>Participant management</strong></h3></summary>
-  <p>Participant management features might include:</p>
-  <ul>
-	<li>End device compatibilities and installation procedures</li>
-	<li>Integration with third-party services</li>
-	<li>Measures to increase participant interaction and accessibility</li>
-  </ul>
-  <div class="variable-box">
-	<span>Participant data can be collected via <strong>{device}</strong>.</span>
-	<span>Participants install the data collection application via <strong>{install}</strong>.</span>
-	<span>To get access to the tool or log into a survey, there is <strong>{participantaccess}</strong> access.</span>
-  </div>
-	<p>For some tools, participants might be able to be linked to other survey tools in a personalized way. 
-	   Personalized means that unique participant IDs can be used to hand them over to external tools, 
-	   e.g., web survey tools, in order to uniquely identify and approach participants across tools.</p>
-
-  <div class="if_linking">
-	<div class="variable-box">
-		<span><strong>Linking participants</strong> across tools: <strong>{linking}</strong>.</span>
-	</div>
-  </div>
-
-  <div class="if_incentives_yes">
-	<div class="variable-box">
-		<span>To increase participant motivation or compliance over time, there is <strong>{incentives}</strong>.</span>
-	</div>
-  </div>
-  <div class="if_accessibility">
-	<div class="variable-box">
-		<span>In addition, the tool adheres to princibles of <strong>accessibility</strong>. 
-		  This might include features such as setting language preferences, color schemes, 
-		  or enabling dark mode.</span>
-		<span>In order to enhance accessibility you can modify <strong>{accessibility_other}</strong>.</span>
-	</div>
-  </div>
-</details>
-
-<details open>
-  <summary><h3 class="h4"><strong>Data Handling</strong></h3></summary>
-  <p>Data handling describes how data collected with the tool can be pre-processed, analyzed, visualized, and exported.</p>
-  
-<div class="if_data_preprocessing">
-    <div class="variable-box">
-       <span>Within this tool, it is possible to <strong>pre-process data</strong>.</span>
-       <p>Data pre-processing refers to the steps performed in order to transform the raw data 
-       into an aggregated form before actually starting the analysis. Some tools might automatically 
-       transform data from a specific sensor into an aggregated form in order to reduce the complexity 
-       of the data, while other tools might offer this as an option.</p>
-  </div>
-  <div class="if_preprocessing_disabling">
-    <div class="variable-box">
-      <span>This feature can be <strong>manually (dis)enabled</strong>. Therefore, 
-        researchers can choose whether to export raw or aggregated data.</span>
-    </div>
-  </div>
-    
-  <details>
-    <summary><h4 class="h5"><strong>Data Analysis</strong></h4></summary>
-    <p>There are tools that offer features for data analysis, e.g., for calculating descriptive 
-    or inferential statistics. Other tools offer extended data analyses as an additional service, which may be subject to a charge.</p>
-    <div class="if_data_analysis">
-      <div class="variable-box">
-        <span>The tool offers features for <strong>data analysis</strong>.</span>
-        <span>These features are included: <strong>{dataanalysis_other}</strong>.</span>
-      </div>
-    </div>
-  </details>
-
-  <details>
-    <summary><h4 class="h5"><strong>Data Visualization</strong></h4></summary>
-    <p>Some tools offer features for data visualization, like an integrated dashboard to visualize 
-    data after or also during data collection.</p>
-    <div class="if_data_visualization">
-      <div class="variable-box">
-        <span>The tool offers features for <strong>data visualization</strong>.</span>
-        <span>These features are included: <strong>{datavisualization_other}</strong>.</span>
-      </div>
-    </div>
-  </details>
-
-  <details>
-    <summary><h4 class="h5"><strong>Data Export</strong></h4></summary>
-    <p>The data can be available in one or more file format.</p>
-    <div class="variable-box">
-      <span>Data collected with this tool can be exported in these file format(s): <strong>{exportformat}</strong>.</span>
-    </div>
-  </details>
-</details>
-
-	<details open>
-	  <summary><h3 class="h4"><strong>Other Features and Comments</strong></h3></summary>
-	  <p>There might be other notes on this tool.<p>
-	    <div class="variable-box">
-		<span><strong>Other features worth mentioning are:</strong> {otherfeatures}.</span> 
-	  </div>
-	  <div class="if_comments">
-	    <div class="variable-box">
-		<span><strong>Comments about this tool:</strong> {comments}</span> 
-	  </div>
+		<section class="sub">
+			<h4 class="h5">Contribution</h4>
+			<div class="side">
+				<div class="values">
+					<div class="if_contribution_yes">
+						<div class="variable-box">
+						  <span>Contribution to the tool's development is possible by: <strong>{contribution}</strong>.</span>
+						</div>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Some providers allow for contribution to the tool's development.</p>
+				</div>
+			</div>
+		</section>
 	</details>
 
 	<details open>
-	  <summary><h3 class="h4"><strong>Additional Information (Website, Repository, Publication)</strong></h3></summary>
-	  <div class="variable-box">
-		<span>There are additional resources available to learn more about this tool:</span>
-		<ul>
-		  <li>Website: <strong>{info_websitecomment}.</strong></li>
-		  <li>Repository: <strong>{info_repositorycomment}.</strong></li>
-		  <li>Publication: <strong>{info_publicationcomment}.</strong></li>
-		  <li>Other: {info_additional1}; {info_additional2}; {info_othercomment}.</li>
-		 </ul>
-	  </div>
+		<summary><h3 class="h4"><strong>Support & Documentation</strong></h3></summary>
+		<div class="side">
+			<div class="values">
+				<div class="if_documentation_yes">
+					<div class="variable-box">
+					  <span>There is <strong>documentation</strong> of this tool.</span>
+					  <span>The tool documentation is in form of a <strong>{resources}</strong>.</span>
+					</div>
+				</div>
+				<div class="if_technical_support">
+					<div class="variable-box">
+					  <span>The providers offer <strong>technical support</strong>.</span>
+					  <span>The technical support provided is in form of <strong>{technical_support_availability}</strong>.</span>
+					</div>
+				</div>
+				<div class="if_advice_availability">
+					<div class="variable-box">
+					  <span>The providers offer <strong>advice/special guidance</strong>.</span>
+					  <span>The availability of this guidance can be described as <strong>{special_guidance}</strong>.</span>
+					</div>
+				</div>
+			</div>
+			<div class="expl">
+				<p>Users might be able to access documentation that helps them use the tool. Examples include written or video tutorials, user guides, or FAQ pages.</p>
+				<p>Additionally, providers might offer <strong>technical support or expert advice/special guidance</strong>.
+				   Technical support might be provided by email or a detailed documentation on common problems
+				   and how to solve them. Special guidance/expert advice might come in form of consultation
+				   on research design, data privacy issues, trainings or workshops on tool use, or other
+				   capacity building.</p>
+			</div>
+		</div>
+	</details>
+
+	<details open>
+		<summary><h3 class="h4"><strong>Information on the data that can be collected</strong></h3></summary>
+		<div class="side">
+			<div class="values">
+				<div class="variable-box">
+				  <span>The tool is able to collect <strong>{datasources}</strong> data.</span>
+				</div>
+			</div>
+			<div class="expl">
+				<p>Data can be generated both through active self-reporting and passive behavioral tracing,
+				   often utilizing sensors built into mobile devices. Survey or self-reported data refers to any response
+				   of study participants directly / actively provided via questionnaires, experience sampling or diary methods.
+				   Sensor data refers to data automatically / passively collected by technical systems without participants
+				   having to actively provide the data, e.g., GPS data.</p>
+			</div>
+		</div>
+
+		<section class="sub">
+			<h4 class="h5">Sensor Data Collection</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>This tool collects <strong>{sensordata}</strong> data.</span>
+					  <span>In terms of sensor logs, the tool is able to collect data from the device's <strong>{sensorlog}</strong>.</span>
+					  <span>In terms of device logs, the tool is able to collect data from the device's <strong>{devicelog}</strong>.</span>
+					  <span>In terms of usage logs, the tool is able to collect data from the device's <strong>{usagelog}</strong>.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Sensor data can be categorized into sensor log data, device status log data, and usage log data (Schödel & Mehl, 2024). <strong>Sensor log data</strong> can be described
+					   as data from physical sensors like microphones, light sensors, or thermometers.
+					   <strong>Device status log data</strong> refers to data on the device status like battery
+					   level, whether headphones are plugged in, or the location via GPS. <strong>Usage log data</strong>
+					   is data on the use of the device, like app usage, in-app content tracking, camera usage,
+					   screen state, or notifications.</p>
+					<p>Schoedel, R., & Mehl, M. R. (2024). Mobile sensing methods.
+					   In H.T. Reis, T. West & C.M. Judd (Eds.),
+					   Handbook of Research Methods in Social and Personality (3rd ed., pp. 297–321).
+					   Cambridge University Press. https://doi.org/10.1017/9781009170123.014</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="sub">
+			<h4 class="h5">Survey / Self-Report Data Collection</h4>
+			<div class="side">
+				<div class="values"></div>
+				<div class="expl">
+					<p>Survey or self-reported data refers to any responses of study participants provided via questionnaires,
+					   experience sampling, or diary methods. Regarding self-reported data collection, tools can differ
+					   in available question types, multimedia integration, survey flow options, scheduling, and
+					   signalling of momentary assessments, as well as possible special features.</p>
+				</div>
+			</div>
+
+			<section class="sub">
+				<h5>Question types & multimedia integration</h5>
+				<div class="side">
+					<div class="values">
+						<div class="variable-box">
+						  <span>These item and question types can be used to collect self-report data within the tool: <strong>{items}</strong>.</span>
+						  <span>It is possible to include <strong>{media}</strong> within the questionnaire.</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="sub">
+				<h5>Survey flow options</h5>
+				<div class="side">
+					<div class="values">
+						<div class="variable-box">
+						  <span>To control survey flow and logic, the tool allows for <strong>{surveyflow}</strong>.</span>
+						</div>
+					</div>
+					<div class="expl">
+						<p>Survey flow options help control the order and display of survey questions based
+						   on participant answers or grouping variables. We distinguish these survey flow options:</p>
+						<ul>
+						  <li><em>Skip/display logic</em> describes the possibility to skip/display additional questions
+							  based on participant answers. For example, a person reporting that they consume coffee
+							  daily might be asked how many cups of coffee they drink each day, while a person
+							  reporting that they don't drink coffee will not.</li>
+						  <li><em>Piping</em> describes the insertion of participant input into following questions.
+							  For example, a participant might report that their best friend's name is "David".
+							  In the following question, they might be asked since when they know David.</li>
+						  <li><em>Termination logic</em> sets a rule for when the survey should be terminated immediately.
+							  For example, when specific inclusion criteria are not met.</li>
+						  <li><em>Branching (participant grouping)</em> defines survey paths based on participant answers,
+							primarly by setting values like a grouping variable in an experimental design, or even sensor data like geolocation.</li>
+						  <li><em>Question Grouping</em> organizes items in chunks to aid navigation.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section class="sub">
+				<h5>Assessment schedules</h5>
+				<div class="side">
+					<div class="values">
+						<div class="variable-box">
+						  <span>The timing of questionnaires can be <strong>{schedules}</strong>.</span>
+						  <span>The time-based assessment is <strong>{schedules_time}</strong>.</span>
+						  <span>The event-based assessment is <strong>{schedules_event}</strong>.</span>
+						  <span>Participants find out that a new survey is available <strong>{signalling}</strong>.</span>
+						</div>
+					</div>
+					<div class="expl">
+						<p><em>Assessment schedule refers to the timing of self-reporting:</em></p>
+						<ul>
+						  <li><em>Self-reminded:</em> Participants choose when to make an assessment, e.g. in a diary format.</li>
+						  <li><em>Time-based:</em> Participants are prompted to make an assessment based on date and time, e.g. every day at 6. pm.</li>
+						  <li><em>Event-based:</em> Participants are prompted to make an assessment based on events the phone records (via sensors), e.g. being asked to contextualize a detected geolocation.</li>
+						  <li><em>Preference-based:</em> Participants can set their own scheduling plan according to their preferences.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<div class="if_notes">
+				<section class="sub">
+					<h5>Additional self-report collection features</h5>
+					<div class="side">
+						<div class="values">
+							<div class="variable-box">
+							  <span><strong>Additional features for self-report data collection are: </strong>{notes}</span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</section>
+	</details>
+
+	<details open>
+		<summary><h3 class="h4"><strong>Participant management</strong></h3></summary>
+		<div class="side">
+			<div class="values">
+				<div class="variable-box">
+				  <span>Participant data can be collected via <strong>{device}</strong>.</span>
+				  <span>Participants install the data collection application via <strong>{install}</strong>.</span>
+				  <span>To get access to the tool or log into a survey, there is <strong>{participantaccess}</strong> access.</span>
+				</div>
+				<div class="if_linking">
+					<div class="variable-box">
+					  <span><strong>Linking participants</strong> across tools: <strong>{linking}</strong>.</span>
+					</div>
+				</div>
+				<div class="if_incentives_yes">
+					<div class="variable-box">
+					  <span>To increase participant motivation or compliance over time, there is <strong>{incentives}</strong>.</span>
+					</div>
+				</div>
+				<div class="if_accessibility">
+					<div class="variable-box">
+					  <span>In addition, the tool adheres to principles of <strong>accessibility</strong>.</span>
+					  <span>In order to enhance accessibility you can modify <strong>{accessibility_other}</strong>.</span>
+					</div>
+				</div>
+			</div>
+			<div class="expl">
+				<p>Participant management features might include:</p>
+				<ul>
+				  <li>End device compatibilities and installation procedures</li>
+				  <li>Integration with third-party services</li>
+				  <li>Measures to increase participant interaction and accessibility</li>
+				</ul>
+				<p>For some tools, participants might be able to be linked to other survey tools in a personalized way.
+				   Personalized means that unique participant IDs can be used to hand them over to external tools,
+				   e.g., web survey tools, in order to uniquely identify and approach participants across tools.</p>
+				<p>Accessibility might include features such as setting language preferences, color schemes,
+				   or enabling dark mode.</p>
+			</div>
+		</div>
+	</details>
+
+	<details open>
+		<summary><h3 class="h4"><strong>Data Handling</strong></h3></summary>
+		<div class="side">
+			<div class="values">
+				<div class="if_data_preprocessing">
+					<div class="variable-box">
+					  <span>Within this tool, it is possible to <strong>pre-process data</strong>.</span>
+					</div>
+				</div>
+				<div class="if_preprocessing_disabling">
+					<div class="variable-box">
+					  <span>This feature can be <strong>manually (dis)enabled</strong>. Therefore,
+						researchers can choose whether to export raw or aggregated data.</span>
+					</div>
+				</div>
+			</div>
+			<div class="expl">
+				<p>Data handling describes how data collected with the tool can be pre-processed, analyzed, visualized, and exported.</p>
+				<p>Data pre-processing refers to the steps performed in order to transform the raw data
+				   into an aggregated form before actually starting the analysis. Some tools might automatically
+				   transform data from a specific sensor into an aggregated form in order to reduce the complexity
+				   of the data, while other tools might offer this as an option.</p>
+			</div>
+		</div>
+
+		<section class="sub">
+			<h4 class="h5">Data Analysis</h4>
+			<div class="side">
+				<div class="values">
+					<div class="if_data_analysis">
+						<div class="variable-box">
+						  <span>The tool offers features for <strong>data analysis</strong>.</span>
+						  <span>These features are included: <strong>{dataanalysis_other}</strong>.</span>
+						</div>
+					</div>
+				</div>
+				<div class="expl">
+					<p>There are tools that offer features for data analysis, e.g., for calculating descriptive
+					   or inferential statistics. Other tools offer extended data analyses as an additional service, which may be subject to a charge.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="sub">
+			<h4 class="h5">Data Visualization</h4>
+			<div class="side">
+				<div class="values">
+					<div class="if_data_visualization">
+						<div class="variable-box">
+						  <span>The tool offers features for <strong>data visualization</strong>.</span>
+						  <span>These features are included: <strong>{datavisualization_other}</strong>.</span>
+						</div>
+					</div>
+				</div>
+				<div class="expl">
+					<p>Some tools offer features for data visualization, like an integrated dashboard to visualize
+					   data after or also during data collection.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="sub">
+			<h4 class="h5">Data Export</h4>
+			<div class="side">
+				<div class="values">
+					<div class="variable-box">
+					  <span>Data collected with this tool can be exported in these file format(s): <strong>{exportformat}</strong>.</span>
+					</div>
+				</div>
+				<div class="expl">
+					<p>The data can be available in one or more file format.</p>
+				</div>
+			</div>
+		</section>
+	</details>
+
+	<details open>
+		<summary><h3 class="h4"><strong>Other Features and Comments</strong></h3></summary>
+		<div class="side">
+			<div class="values">
+				<div class="variable-box">
+				  <span><strong>Other features worth mentioning are:</strong> {otherfeatures}.</span>
+				</div>
+				<div class="if_comments">
+					<div class="variable-box">
+					  <span><strong>Comments about this tool:</strong> {comments}</span>
+					</div>
+				</div>
+			</div>
+			<div class="expl">
+				<p>There might be other notes on this tool.</p>
+			</div>
+		</div>
+	</details>
+
+	<details open>
+		<summary><h3 class="h4"><strong>Additional Information (Website, Repository, Publication)</strong></h3></summary>
+		<div class="side">
+			<div class="values">
+				<div class="variable-box">
+				  <span>There are additional resources available to learn more about this tool:</span>
+				  <ul>
+					<li>Website: <strong>{info_websitecomment}.</strong></li>
+					<li>Repository: <strong>{info_repositorycomment}.</strong></li>
+					<li>Publication: <strong>{info_publicationcomment}.</strong></li>
+					<li>Other: {info_additional1}; {info_additional2}; {info_othercomment}.</li>
+				  </ul>
+				</div>
+			</div>
+		</div>
 	</details>
 </body>
 </html>
