@@ -398,17 +398,21 @@ details[open] > summary::before {
     color: #6b6b6b; /* "There is no information ..." */
     margin-top: 0;
 }
-/* Explanation: grey box with an info icon */
-.expl {
+/* Grey box with an info icon: explanations and the tool intro (smaller grey text), the box on the table tab */
+.expl,
+.info-box {
     position: relative;
     background-color: #f3f3f3;
     border-radius: 6px;
     padding: 10px 14px 10px 36px;
+}
+.expl {
     margin-bottom: 10px;
     color: #555;
     font-size: 13px;
 }
-.expl::before {
+.expl::before,
+.info-box::before {
     content: "\f05a"; /* Font Awesome "circle-info" */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -424,7 +428,8 @@ details[open] > summary::before {
     padding-left: 18px;
     margin: 4px 0 6px;
 }
-.expl > :last-child {
+.expl > :last-child,
+.info-box > :last-child {
     margin-bottom: 0;
 }
 /* Wide descriptions: explanation to the right, its column the same width at every level so the notes line up.
@@ -447,12 +452,8 @@ details[open] > summary::before {
 }
 
 .info-box {
-	background-color:#E2EAF4;
 	font-size: 14px;
 	line-height: 1.8;
-    border-radius: 10px;
-	border: 2px solid #c4c4c4;
-    padding: 10px;
 	margin-bottom: 15px;
 	margin-top: 15px;
 	overflow: visible; /* Prevents content from being cut off */
