@@ -140,9 +140,9 @@ function fitPlots() {
 $(document).on('shown.bs.tab', fitPlots);
 $(window).on('resize', fitPlots);
 
-// Scrolls back to the top of the table if it is above the window (20 px gap, as the sidebar)
+// Scrolls back to the search field above the table if it is above the window (20 px gap, as the sidebar)
 function scrollToTable() {
-  var top = document.getElementById(TABLE_ID).getBoundingClientRect().top;
+  var top = document.querySelector('.search-row').getBoundingClientRect().top;
   if (top < 0) window.scrollTo(0, window.scrollY + top - 20);
 }
 
@@ -183,6 +183,11 @@ function showMatchCount(state) {
   document.getElementById('match-count').textContent = shown === total ?
     'Showing all ' + total + ' tools' : 'Showing ' + shown + ' of ' + total + ' tools';
 }
+
+// Search field above the table: searches the hidden column with the shown text (build_site.R)
+$(document).on('input', '#table-search', function () {
+  Reactable.setSearch(TABLE_ID, this.value || undefined);
+});
 
 // Updates the count on every change of the table, once the table has been drawn
 function watchMatchCount() {

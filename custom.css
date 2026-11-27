@@ -101,13 +101,46 @@ label {
     overflow: auto;
     border-color: #e6e6e6;
 }
-.rt-search {
-    align-self: flex-start; /* Search field at the left edge of the table. */
-    background-color: #fff; /* Search field background color (white). */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Slightly gray border for the search field. */
-    padding: 5px 7px; /* Padding (vertical 5px, horizontal 7px). */
+/* Search field and number of matching tools in one row; phones: field full width, count below */
+.search-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+#match-count {
+    margin: 0;
+    color: #666;
+}
+#table-search {
+    -webkit-appearance: none; /* Same look as a text field in Safari. */
+    appearance: none;
     width: 300px; /* Room for longer search terms. */
     max-width: 100%;
+    height: 32px;
+    padding: 5px 7px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    color: inherit;
+    font: inherit;
+}
+#table-search:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+    outline: none;
+}
+@media (max-width: 991px) {
+    .search-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+    #table-search {
+        width: 100%;
+    }
+    #match-count {
+        padding-left: 8px; /* Level with the text in the search field (border and padding). */
+    }
 }
 
 /* --- 5. Dropdown (Selectize) --- */
