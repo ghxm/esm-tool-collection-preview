@@ -12,7 +12,7 @@ var TAB_ADDRESSES = {
   'How to contribute': 'contribute'
 };
 var PAGE_TITLE = document.title;
-var shownTool = null; // template of the tool in the details tab
+var shownTool = null; // template of the tool in the details tab, kept for this visit only (nothing is stored in the browser)
 var applying = false; // true while the page follows the web address
 
 // Switches to a tab by its title
@@ -25,20 +25,11 @@ function showTool(tpl) {
   document.getElementById('tool_details').innerHTML = tpl.innerHTML;
   shownTool = tpl;
   showDetailsTab();
-  try { localStorage.setItem('lastTool', tpl.getAttribute('data-tool-slug')); } catch (e) {} // storage may be blocked
 }
 
 // Shows the details tab, hidden in the tab row until a tool has been opened (www/custom.css)
 function showDetailsTab() {
   document.querySelector('.nav-tabs').classList.add('has-tool');
-}
-
-// Template of the tool shown last in this browser (also on an earlier visit), or null
-function lastTool() {
-  if (shownTool) return shownTool;
-  var slug = null;
-  try { slug = localStorage.getItem('lastTool'); } catch (e) {}
-  return slug && /^[a-z0-9-]+$/.test(slug) ? document.querySelector('#tool-templates template[data-tool-slug="' + slug + '"]') : null;
 }
 
 // Moves keyboard focus to the heading of the shown tab
@@ -62,7 +53,7 @@ function applyAddress() {
     tab = DETAILS_TAB;
   } else {
     for (var name in TAB_ADDRESSES) if (TAB_ADDRESSES[name] === address) tab = name;
-    if (tab === DETAILS_TAB) tool = lastTool(); // the details tab without a tool shows the last tool opened
+    if (tab === DETAILS_TAB) tool = shownTool; // the details tab without a tool shows the last tool opened in this visit
   }
   if (tab === DETAILS_TAB) {
     // Without a tool (none opened yet, or an unknown name) the table is shown instead
@@ -106,7 +97,7 @@ $(document).on('show.bs.tab', function (event) {
   if (applying) return;
   event.preventDefault();
   var tab = $(event.target).attr('data-value');
-  var last = tab === DETAILS_TAB && lastTool();
+  var last = tab === DETAILS_TAB && shownTool;
   goTo(last ? 'tool=' + last.getAttribute('data-tool-slug') : TAB_ADDRESSES[tab]);
 });
 
@@ -216,7 +207,6 @@ document.addEventListener('click', function (event) {
 }, true);
 
 $(function () {
-  if (lastTool()) showDetailsTab();
   history.scrollRestoration = 'manual'; // scroll positions are restored by applyAddress()
   fitPlots();
   watchMatchCount();
